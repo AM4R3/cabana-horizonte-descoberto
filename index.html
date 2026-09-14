@@ -84,9 +84,8 @@ section{position:relative}
 .abaixo{content-visibility:auto;contain-intrinsic-size:auto 900px}
 
 /* ============ MOVIMENTO ============ */
-@keyframes sunRise{from{transform:translateY(230px)}to{transform:translateY(0)}}
+@keyframes heroDrift{from{transform:scale(1.08)}to{transform:scale(1)}}
 @keyframes haloWarm{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
-@keyframes horizonDraw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes trackIn{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:none}}
 @keyframes badgePulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(2.1);opacity:0}100%{transform:scale(2.1);opacity:0}}
@@ -139,30 +138,27 @@ section{position:relative}
 @media (min-width:900px){.nav__links{display:flex}.nav .btn .longo{display:inline}.nav .btn .curto{display:none}.nav .btn{min-height:48px;padding:0 1.5em}}
 
 /* ============ 02 HERO ============ */
-.hero{display:flex;flex-direction:column;min-height:min(100svh,1000px);background:linear-gradient(170deg,var(--ceu) 0%,var(--areia) 55%)}
-.hero__txt{padding-top:92px;position:relative;z-index:2}
-.hero__selo{display:inline-flex;align-items:center;gap:.6em;font:700 .75rem/1 "Albert Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;animation:riseIn .9s var(--ease) both}
-.hero h1{font-size:clamp(2.3rem,9vw,5.4rem);max-width:12ch;line-height:1.02;font-weight:600}
-.hero__sub{max-width:34rem;margin-top:16px;font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.55;color:var(--texto);animation:riseIn .9s .25s var(--ease) both}
+.hero{position:relative;display:flex;flex-direction:column;min-height:min(100svh,1000px);background:#2A2119;overflow:hidden}
+/* mobile: a foto ocupa a metade de baixo, pra cabana aparecer logo abaixo dos botões */
+.hero__foto{position:absolute;left:0;right:0;bottom:0;height:56%;margin:0;z-index:0;overflow:hidden}
+.hero__foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%;animation:heroDrift 2.8s cubic-bezier(.16,.8,.24,1) both}
+.hero__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#2A2119 0%,#2A2119 7%,rgba(42,33,25,.55) 24%,rgba(42,33,25,0) 50%,rgba(42,33,25,.25) 100%)}
+.hero__txt{flex:1;padding-top:96px;padding-bottom:40px;position:relative;z-index:2}
+.hero__selo{display:inline-flex;align-items:center;gap:.6em;font:700 .75rem/1 "Albert Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--areia);margin-bottom:14px;animation:riseIn .9s var(--ease) both}
+.hero h1{font-size:clamp(2.3rem,9vw,5.4rem);max-width:12ch;line-height:1.02;font-weight:600;color:var(--areia);text-shadow:0 2px 28px rgba(20,14,8,.3)}
+.hero__sub{max-width:34rem;margin-top:16px;font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.55;color:rgba(247,242,232,.93);animation:riseIn .9s .25s var(--ease) both}
 .hero__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;margin-top:22px;animation:riseIn .9s .4s var(--ease) both}
-.hero__acoes .ul{font-weight:700;color:var(--terra)}
+.hero__acoes .ul{font-weight:700;color:var(--areia)}
 .status{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:4px 24px;margin-block:0;padding-block:14px 16px;font-size:.85rem;color:rgba(247,242,232,.86)}
-.status-faixa{background:var(--terra)}
+.status-faixa{position:relative;z-index:2;background:var(--terra)}
 .status div{display:flex;gap:6px}
 .status dt{font-weight:700;color:var(--areia)}
 .status dd{margin:0}
-.hero__ceu{position:relative;flex:1;min-height:190px;margin-top:-40px}
-@media (min-height:760px){.hero__ceu{min-height:230px}}
-.hero__ceu svg{position:absolute;inset:0;width:100%;height:100%}
-.sol,.sol-halo,.raios{transform-box:fill-box;transform-origin:50% 50%}
-.sol{animation:sunRise 2.4s cubic-bezier(.16,.8,.24,1) both}
-.sol-halo{animation:sunRise 2.4s cubic-bezier(.16,.8,.24,1) both}
-.sol-halo circle{transform-box:fill-box;transform-origin:50% 50%;animation:haloWarm 7s 2.4s ease-in-out infinite;opacity:.55}
-.raios{animation:riseIn 1.4s 1.9s var(--ease) both}
-.horizonte{animation:horizonDraw 1.6s .2s var(--ease) both}
 @media (min-width:1024px){
-  .hero__txt{padding-top:132px}
-  .hero__ceu{min-height:300px;margin-top:-90px}
+  .hero__txt{padding-top:150px}
+  .hero__foto{top:0;height:auto}
+  .hero__foto img{object-position:50% 50%}
+  .hero__foto::after{background:linear-gradient(90deg,rgba(36,28,18,.82) 0%,rgba(36,28,18,.58) 40%,rgba(36,28,18,.06) 72%),linear-gradient(0deg,rgba(36,28,18,.35),rgba(36,28,18,0) 30%)}
 }
 
 /* ============ 03 O REFÚGIO ============ */
@@ -286,7 +282,7 @@ section{position:relative}
 .final__ig{display:block;margin-top:14px}
 .final__ig .ul{font-weight:700;color:var(--terra)}
 .final__sol{display:block;width:min(560px,90%);height:auto;margin:40px auto 0}
-.final__sol .sol-halo circle{animation:haloWarm 7s ease-in-out infinite}
+.final__sol .sol-halo circle{transform-box:fill-box;transform-origin:50% 50%;animation:haloWarm 7s ease-in-out infinite}
 
 /* ============ 10 FOOTER ============ */
 .rodape{background:var(--terra);color:rgba(247,242,232,.85);padding-block:56px 36px;font-size:.92rem}
@@ -296,8 +292,13 @@ section{position:relative}
 .rodape li a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
 .rodape li a:hover{text-decoration:underline}
 .rodape__base{margin-top:26px;padding-top:20px;border-top:1px solid rgba(247,242,232,.16);font-size:.8rem}
-.site-credit{display:inline-block;font-size:11px;color:inherit;text-decoration:none;opacity:.3;letter-spacing:.02em;transition:opacity .3s ease;padding:6px 0}
-.site-credit:hover,.site-credit:focus-visible{opacity:.8}
+/* crédito: legível e com cara de link, sem competir com o CTA */
+.site-credit{display:inline-flex;align-items:center;gap:8px;min-height:44px;white-space:nowrap;margin-top:6px;font-size:13px;color:rgba(247,242,232,.78);text-decoration:none;letter-spacing:.01em;transition:color .25s ease}
+.site-credit strong{color:var(--areia);font-weight:700;border-bottom:1px solid rgba(201,145,47,.7);padding-bottom:1px;transition:border-color .25s ease}
+.site-credit svg{width:14px;height:14px;flex:none;color:var(--sol);transition:transform .25s ease}
+.site-credit:hover,.site-credit:focus-visible{color:var(--areia)}
+.site-credit:hover strong,.site-credit:focus-visible strong{border-color:var(--sol)}
+.site-credit:hover svg,.site-credit:focus-visible svg{transform:translate(2px,-2px)}
 @media (min-width:768px){.rodape__in{grid-template-columns:1.2fr 1fr 1fr;align-items:start}}
 
 /* ============ BARRA FIXA (mobile) ============ */
@@ -366,9 +367,13 @@ section{position:relative}
 </nav>
 
 <main>
-<!-- ============ 02 HERO: o sol do logo nascendo atrás do horizonte ============ -->
-<!-- SUBSTITUIR: quando houver foto panorâmica da vista real em alta (1600x900px), ela pode entrar atrás do SVG; o sol continua por cima -->
+<!-- ============ 02 HERO: foto real da vista (frame do reel do Dia 01) ============ -->
+<!-- SUBSTITUIR: foto original da vista em alta (1600x900px ou maior). A atual vem de um vídeo de 720px e amolece no desktop -->
 <header class="hero" id="topo">
+  <picture class="hero__foto">
+    <source media="(min-width:1024px)" srcset="assets/img/hero-wide.jpg" width="1600" height="900">
+    <img src="assets/img/hero-720.jpg" srcset="assets/img/hero-720.jpg 720w, assets/img/hero.jpg 1080w" sizes="100vw" width="720" height="850" fetchpriority="high" alt="A cabana em A no alto do terreno, com a piscina em obra e o horizonte de mata do cerrado ao fundo">
+  </picture>
   <div class="wrap hero__txt">
     <p class="hero__selo"><svg width="26" height="15" aria-hidden="true"><use href="#solzinho"/></svg>1ª Eco Cabana do Cerrado</p>
     <h1>O seu próximo refúgio está nascendo.</h1>
@@ -379,34 +384,6 @@ section{position:relative}
     </div>
   </div>
 
-  <div class="hero__ceu" aria-hidden="true">
-    <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice">
-      <defs>
-        <radialGradient id="gSol" cx="50%" cy="42%" r="58%">
-          <stop offset="0" stop-color="#F3CC6E"/><stop offset=".72" stop-color="#C9912F"/><stop offset="1" stop-color="#B27A22"/>
-        </radialGradient>
-        <radialGradient id="gHalo">
-          <stop offset="0" stop-color="#F3CC6E" stop-opacity=".8"/><stop offset=".55" stop-color="#EBC57A" stop-opacity=".3"/><stop offset="1" stop-color="#EBC57A" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <g class="sol-halo"><circle cx="860" cy="330" r="330" fill="url(#gHalo)"/></g>
-      <path class="horizonte" d="M0 332 Q720 312 1440 332" stroke="#3E3128" stroke-opacity=".35" stroke-width="1.5" fill="none"/>
-      <g class="raios" stroke="#C9912F" stroke-width="5" stroke-linecap="round" opacity=".75">
-        <path d="M860 128v-38M752 158l-20-32M968 158l20-32M672 232l-32-20M1048 232l32-20"/>
-      </g>
-      <g class="sol"><circle cx="860" cy="330" r="146" fill="url(#gSol)"/></g>
-      <path d="M0 352C240 300 430 392 710 348S1180 300 1440 346V560H0Z" fill="#DCC08A"/>
-      <path d="M0 418C300 368 520 452 820 410S1260 380 1440 420V560H0Z" fill="#A3AD86"/>
-      <path d="M0 426C300 376 520 460 820 418S1260 388 1440 428" stroke="#C9912F" stroke-width="3" fill="none" opacity=".7"/>
-      <path d="M0 478C260 438 560 510 900 468S1300 448 1440 480V560H0Z" fill="#75855F"/>
-      <path d="M0 486C260 446 560 518 900 476S1300 456 1440 488" stroke="#C9912F" stroke-width="3" fill="none" opacity=".6"/>
-      <path d="M0 530C360 500 700 560 1080 520S1380 514 1440 524V560H0Z" fill="#3E3128"/>
-      <g class="capim" style="position:static">
-        <use href="#capim" x="150" y="440" width="96" height="81"/>
-        <use href="#capim" x="1210" y="452" width="72" height="61"/>
-      </g>
-    </svg>
-  </div>
   <div class="status-faixa">
     <dl class="wrap status">
       <div><dt>Agenda:</dt><dd>ainda não abriu</dd></div>
@@ -649,7 +626,7 @@ section{position:relative}
     </div>
     <div class="rodape__base">
       <p>© 2026 Cabana Horizonte Descoberto. Em construção.</p>
-      <a href="https://www.instagram.com/baruc.amare/" target="_blank" rel="noopener" class="site-credit">feito por @baruc.amare</a>
+      <a href="https://www.instagram.com/baruc.amare/" target="_blank" rel="noopener" class="site-credit">Site feito por <strong>@baruc.amare</strong><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </footer>
