@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cabana Horizonte Descoberto | 1ª Eco Cabana do Cerrado, a 1h de Brasília</title>
+<meta name="description" content="Eco cabana perto de Brasília, em construção em Santo Antônio do Descoberto/GO. Self-wellness, natureza e reconexão. Entre na lista de espera e saiba primeiro quando a agenda abrir.">
+<meta name="theme-color" content="#F7F2E8">
+<link rel="canonical" href="https://cabana-horizonte-descoberto.vercel.app/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- OpenGraph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Horizonte Descoberto">
+<meta property="og:title" content="Eco cabana perto de Brasília | Horizonte Descoberto">
+<meta property="og:description" content="A 1ª Eco Cabana do Cerrado está nascendo a 1h de Brasília. Entre na lista de espera e saiba primeiro quando a agenda abrir.">
+<meta property="og:url" content="https://cabana-horizonte-descoberto.vercel.app/">
+<meta property="og:image" content="https://cabana-horizonte-descoberto.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/lora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Schema.org: em construção, então sem horário, preço ou comodidades -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Cabana Horizonte Descoberto",
+  "alternateName": "1ª Eco Cabana do Cerrado",
+  "description": "Eco cabana em construção no cerrado goiano, a 1h de Brasília. Self-wellness, natureza e reconexão.",
+  "url": "https://cabana-horizonte-descoberto.vercel.app/",
+  "image": "https://cabana-horizonte-descoberto.vercel.app/og-image.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santo Antônio do Descoberto",
+    "addressRegion": "GO",
+    "addressCountry": "BR"
+  },
+  "sameAs": ["https://www.instagram.com/cabanahorizontedescoberto/"]
+}
+</script>
+
+<style>
+/* ============ FONTES (auto-hospedadas, variáveis) ============ */
+@font-face{font-family:"Lora";font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(assets/fonts/lora-latin-var.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Albert Sans";font-style:normal;font-weight:100 900;font-display:swap;
+  src:url(assets/fonts/albert-sans-latin-var.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* ============ TOKENS ============ */
+:root{
+  --terra:#3E3128;    /* títulos/footer: 10.9:1 sobre --areia */
+  --cerrado:#75855F;  /* detalhes: 3.4:1, só grande/decorativo */
+  --sol:#C9912F;      /* EXCLUSIVO botões, texto --sol-ink: 7.2:1 */
+  --areia:#F7F2E8;    /* base */
+  --texto:#4A3D33;    /* corpo: 8.6:1 */
+  --sol-ink:#241C12;
+  --ceu:#E8C98A;
+  --linha:rgba(62,49,40,.16);
+  --gut:clamp(20px,5vw,56px);
+  --max:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--areia);color:var(--texto);
+  font:400 1.0625rem/1.65 "Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:"Lora",Georgia,serif;color:var(--terra);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.012em}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+section{position:relative}
+.abaixo{content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+/* ============ MOVIMENTO ============ */
+@keyframes sunRise{from{transform:translateY(230px)}to{transform:translateY(0)}}
+@keyframes haloWarm{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.06)}}
+@keyframes horizonDraw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes trackIn{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:none}}
+@keyframes badgePulse{0%{transform:scale(1);opacity:.7}70%{transform:scale(2.1);opacity:0}100%{transform:scale(2.1);opacity:0}}
+@keyframes grassSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3.5deg)}}
+@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js [data-reveal].is-visible{opacity:1;transform:none}
+
+/* underline dourado crescendo */
+.ul{position:relative;text-decoration:none;display:inline-flex;align-items:center;min-height:48px}
+.ul::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:2px;background:var(--sol);transform:scaleX(.18);transform-origin:left}
+.ul:hover::after,.ul:focus-visible::after{animation:lineGrow .45s var(--ease) forwards}
+
+/* ============ BOTÕES ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:52px;padding:0 1.7em;
+  background:var(--sol);color:var(--sol-ink);border:0;border-radius:999px;cursor:pointer;
+  font:700 .875rem/1.1 "Albert Sans",system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;text-align:center;
+  transition:transform .1s ease,box-shadow .3s ease}
+.btn:hover{box-shadow:0 12px 26px -12px rgba(154,104,22,.8)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--grande{min-height:60px;font-size:1rem;padding:0 2.2em}
+
+/* marcador de sol (eco do logo) */
+.marca{display:inline-flex;align-items:center;gap:.6em;font:700 .75rem/1 "Albert Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.marca svg{width:26px;height:15px;flex:none}
+
+/* capim do cerrado */
+.capim{position:absolute;bottom:0;width:64px;height:54px;pointer-events:none}
+.capim path{transform-box:fill-box;transform-origin:50% 100%;animation:grassSway 5s ease-in-out infinite}
+.capim path:nth-child(2){animation-duration:6.2s;animation-delay:-1.4s}
+.capim path:nth-child(3){animation-duration:4.6s;animation-delay:-2.8s}
+
+/* linha do horizonte (divisor, usada só 2x) */
+.horizonte-div{display:block;width:100%;height:18px;color:var(--terra)}
+
+/* ============ 01 NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(247,242,232,.85);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.rolou{border-color:var(--linha)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.marca-site{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--terra);min-height:48px}
+.marca-site svg{width:38px;height:38px;flex:none}
+.marca-site span{font:700 .78rem/1.15 "Albert Sans",sans-serif;letter-spacing:.14em}
+.nav__links{display:none;gap:28px;font-weight:600;font-size:.95rem;color:var(--terra)}
+.nav .btn{min-height:44px;padding:0 1.1em;font-size:.75rem}
+.nav .btn .longo{display:none}
+@media (max-width:419px){.nav .btn{display:none}}
+@media (min-width:900px){.nav__links{display:flex}.nav .btn .longo{display:inline}.nav .btn .curto{display:none}.nav .btn{min-height:48px;padding:0 1.5em}}
+
+/* ============ 02 HERO ============ */
+.hero{display:flex;flex-direction:column;min-height:100svh;background:linear-gradient(170deg,var(--ceu) 0%,var(--areia) 55%)}
+.hero__txt{padding-top:92px;position:relative;z-index:2}
+.hero__selo{display:inline-flex;align-items:center;gap:.6em;font:700 .75rem/1 "Albert Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;animation:riseIn .9s var(--ease) both}
+.hero h1{font-size:clamp(2.3rem,9vw,5.4rem);max-width:12ch;line-height:1.02;font-weight:600}
+.hero__sub{max-width:34rem;margin-top:16px;font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.55;color:var(--texto);animation:riseIn .9s .25s var(--ease) both}
+.hero__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;margin-top:22px;animation:riseIn .9s .4s var(--ease) both}
+.hero__acoes .ul{font-weight:700;color:var(--terra)}
+.status{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:4px 24px;margin:0;padding-block:14px 16px;font-size:.85rem;color:rgba(247,242,232,.86)}
+.status-faixa{background:var(--terra)}
+.status div{display:flex;gap:6px}
+.status dt{font-weight:700;color:var(--areia)}
+.status dd{margin:0}
+.hero__ceu{position:relative;flex:1;min-height:190px;margin-top:-40px}
+@media (min-height:760px){.hero__ceu{min-height:230px}}
+.hero__ceu svg{position:absolute;inset:0;width:100%;height:100%}
+.sol,.sol-halo,.raios{transform-box:fill-box;transform-origin:50% 50%}
+.sol{animation:sunRise 2.4s cubic-bezier(.16,.8,.24,1) both}
+.sol-halo{animation:sunRise 2.4s cubic-bezier(.16,.8,.24,1) both}
+.sol-halo circle{transform-box:fill-box;transform-origin:50% 50%;animation:haloWarm 7s 2.4s ease-in-out infinite;opacity:.55}
+.raios{animation:riseIn 1.4s 1.9s var(--ease) both}
+.horizonte{animation:horizonDraw 1.6s .2s var(--ease) both}
+@media (min-width:1024px){
+  .hero__txt{padding-top:132px}
+  .hero__ceu{min-height:300px;margin-top:-90px}
+}
+
+/* ============ 03 O REFÚGIO ============ */
+.refugio{padding-block:clamp(72px,12vw,140px) clamp(90px,12vw,150px)}
+.refugio__abre{margin:0 0 clamp(44px,7vw,80px);max-width:46rem}
+.refugio__abre p{font:500 italic clamp(1.45rem,4.4vw,2.35rem)/1.3 "Lora",Georgia,serif;color:var(--terra)}
+.refugio__abre cite{display:block;margin-top:14px;font:600 .82rem/1.3 "Albert Sans",sans-serif;font-style:normal;color:var(--texto)}
+.refugio h2{font-size:clamp(1.15rem,2.6vw,1.35rem);font-family:"Albert Sans",sans-serif;font-weight:700;letter-spacing:0;margin-bottom:18px}
+.pilares{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
+.pilar{display:grid;gap:8px 40px;padding-block:26px;border-bottom:1px solid var(--linha)}
+.pilar__nome{font:600 clamp(1.9rem,6vw,2.6rem)/1.05 "Lora",Georgia,serif;color:var(--terra)}
+.pilar:first-child .pilar__nome{font-size:clamp(2.5rem,9vw,4.4rem)}
+.pilar p{max-width:32rem}
+@media (min-width:768px){.pilar{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:end;padding-block:34px}}
+.refugio__convite{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:40px}
+.refugio__convite p{font:500 italic 1.25rem/1.35 "Lora",Georgia,serif;color:var(--terra)}
+.refugio .capim{right:max(var(--gut),6%)}
+
+/* ============ 04 O QUE ESTÁ NASCENDO ============ */
+.nascendo{padding-block:clamp(40px,8vw,90px) clamp(80px,12vw,140px)}
+.nascendo__topo{display:grid;gap:14px;margin-bottom:clamp(40px,6vw,64px)}
+.nascendo h2{font-size:clamp(2.1rem,6.4vw,3.6rem)}
+.nascendo__topo p{max-width:34rem}
+.bloco{display:grid;gap:22px;padding-block:clamp(34px,5vw,56px);border-top:1px solid var(--linha)}
+.bloco h3{font-size:clamp(1.6rem,4.4vw,2.3rem);margin-bottom:12px}
+.bloco__tag{display:inline-block;margin-bottom:12px;padding:5px 12px;border-radius:999px;background:rgba(117,133,95,.16);color:var(--terra);font:700 .72rem/1.2 "Albert Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.bloco p+p{margin-top:12px}
+.foto{margin:0;border-radius:6px;overflow:hidden;background:#E9DFCC}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto figcaption{font-size:.8rem;padding:8px 2px 0;background:var(--areia)}
+.vista .foto--larga{aspect-ratio:16/9}
+.vista .foto--menor{aspect-ratio:8/7;max-width:340px}
+.piscina__num{font:600 clamp(3.6rem,15vw,7.5rem)/.95 "Lora",Georgia,serif;color:var(--terra);letter-spacing:-.03em}
+.piscina__num small{font-size:.32em;letter-spacing:0;margin-left:.15em}
+.piscina .foto{aspect-ratio:4/5;max-width:440px}
+.paisagismo__fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.paisagismo__fotos .foto{aspect-ratio:4/5}
+.aspas{font:500 italic 1.2rem/1.4 "Lora",Georgia,serif;color:var(--terra)}
+@media (min-width:900px){
+  .vista{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:end}
+  .vista__texto{display:grid;gap:22px}
+  .piscina{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:56px;align-items:center}
+  .paisagismo{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+}
+
+/* ============ 05 DIÁRIO DE OBRA ============ */
+.diario{padding-block:clamp(80px,12vw,140px);background:linear-gradient(180deg,var(--areia),#F1E8D6 30%,#F1E8D6 70%,var(--areia))}
+.diario__topo{display:grid;gap:14px;margin-bottom:34px}
+.diario h2{font-size:clamp(2.4rem,8vw,4.6rem)}
+.diario__serie{max-width:36rem}
+.diario__serie em{font-family:"Lora",Georgia,serif;color:var(--terra)}
+.diario__controles{display:flex;gap:10px;margin-top:6px}
+.diario__controles button{min-height:48px;padding:0 18px;border-radius:999px;border:1px solid rgba(62,49,40,.35);background:transparent;color:var(--terra);font:700 .8rem/1 "Albert Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:transform .1s ease,background .2s}
+.diario__controles button:hover{background:rgba(62,49,40,.06)}
+.diario__controles button:active{transform:scale(.97)}
+.diario__track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);padding:26px var(--gut) 18px;scrollbar-width:thin;scrollbar-color:rgba(62,49,40,.3) transparent;overscroll-behavior-x:contain}
+.js .diario__track[data-reveal]{transform:none}
+.reg{flex:0 0 min(76vw,272px);scroll-snap-align:start;position:relative;padding-top:34px;opacity:0}
+.js .diario__track:not(.is-visible) .reg{opacity:0}
+.diario__track.is-visible .reg,.no-js .reg{animation:trackIn .9s var(--ease) both;animation-delay:calc(var(--i,0) * 55ms)}
+.reg::before{content:"";position:absolute;top:8px;left:0;width:calc(100% + 18px);height:1px;background:rgba(62,49,40,.3)}
+.reg::after{content:"";position:absolute;top:3px;left:0;width:11px;height:11px;border-radius:50%;background:var(--cerrado);box-shadow:0 0 0 3px #F1E8D6}
+.reg:last-child::before{width:100%}
+.reg__dia{position:absolute;top:-16px;left:0;font:700 .72rem/1 "Albert Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--terra)}
+.reg__foto{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#E2D5BD}
+.reg__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.reg time{display:block;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--texto)}
+.reg h3{font-size:1.25rem;margin-top:2px}
+.reg p{font-size:.95rem;margin-top:6px;line-height:1.55}
+.reg a{font-size:.88rem;font-weight:700;color:var(--terra)}
+.reg--agora::after{background:var(--sol);width:13px;height:13px;top:2px}
+.agora{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:var(--terra);color:var(--areia);font:700 .72rem/1 "Albert Sans",sans-serif;letter-spacing:.12em}
+.agora i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--sol)}
+.agora i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--sol);animation:badgePulse 2s ease-out infinite}
+.diario__fecho{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:30px}
+.diario__fecho .ul{font-weight:700;color:var(--terra)}
+
+/* ============ 06 QUEM ESTÁ CONSTRUINDO ============ */
+.quem{padding-block:clamp(80px,12vw,140px)}
+.quem__grid{display:grid;gap:34px}
+.quem .foto{aspect-ratio:4/5;max-width:460px}
+.quem blockquote{margin:0 0 30px;font:500 italic clamp(1.5rem,4.6vw,2.4rem)/1.25 "Lora",Georgia,serif;color:var(--terra)}
+.quem h2{font-size:1.15rem;font-family:"Albert Sans",sans-serif;font-weight:700;letter-spacing:0;margin-bottom:12px}
+.quem__txt p+p{margin-top:14px}
+.quem__txt .btn{margin-top:28px}
+@media (min-width:900px){.quem__grid{grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:72px;align-items:center}}
+
+/* ============ 07 JÁ TEM FILA ============ */
+.fila{background:var(--terra);color:var(--areia);padding-block:clamp(80px,12vw,130px);overflow:hidden}
+.fila__rotulo{font:700 .75rem/1 "Albert Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,232,.78)}
+.fila__destaque{margin:22px 0 0;font:600 clamp(2.2rem,8vw,5rem)/1.04 "Lora",Georgia,serif;color:var(--areia);max-width:15ch;letter-spacing:-.02em}
+.fila__outros{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0;border-top:1px solid rgba(247,242,232,.2)}
+.fila__outros li{padding:18px 0;border-bottom:1px solid rgba(247,242,232,.2);font:500 italic clamp(1.15rem,3vw,1.5rem)/1.3 "Lora",Georgia,serif}
+.fila__rodape{display:grid;gap:22px;margin-top:40px}
+.fila__num{font-size:.95rem;color:rgba(247,242,232,.82)}
+.fila__num strong{font:600 2.2rem/1 "Lora",Georgia,serif;color:var(--areia);margin-right:8px}
+.fila__aviso{font:600 clamp(1.3rem,3.4vw,1.7rem)/1.25 "Lora",Georgia,serif;color:var(--areia)}
+@media (min-width:900px){
+  .fila__grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:70px;align-items:end}
+  .fila__outros{margin-top:0}
+}
+
+/* ============ 08 ONDE ============ */
+.onde{padding-block:clamp(80px,12vw,140px) clamp(100px,13vw,160px)}
+.onde__grid{display:grid;gap:36px}
+.onde h2{font-size:clamp(2rem,6vw,3.4rem)}
+.onde__dist{font:600 clamp(1.3rem,3.6vw,1.8rem)/1.2 "Albert Sans",sans-serif;color:var(--terra);margin-top:10px}
+.onde__txt p:not(.onde__dist){margin-top:16px;max-width:30rem}
+.onde__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:26px}
+.onde__acoes .ul{font-weight:700;color:var(--terra)}
+.mapa{border-radius:8px;overflow:hidden;background:rgba(117,133,95,.16);aspect-ratio:4/3}
+.mapa svg{width:100%;height:100%;display:block}
+.mapa__nota{font-size:.78rem;margin-top:8px}
+.onde .capim{left:max(var(--gut),4%)}
+@media (min-width:900px){.onde__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:center}}
+
+/* ============ 09 CTA FINAL ============ */
+.final{padding-block:clamp(90px,13vw,160px) 0;background:linear-gradient(180deg,var(--areia) 0%,var(--ceu) 100%);text-align:center;overflow:hidden}
+.final h2{font-size:clamp(2.1rem,6.6vw,4rem);max-width:17ch;margin-inline:auto}
+.final .btn{margin-top:34px}
+.final__ig{display:block;margin-top:14px}
+.final__ig .ul{font-weight:700;color:var(--terra)}
+.final__sol{display:block;width:min(560px,90%);height:auto;margin:40px auto 0}
+.final__sol .sol-halo circle{animation:haloWarm 7s ease-in-out infinite}
+
+/* ============ 10 FOOTER ============ */
+.rodape{background:var(--terra);color:rgba(247,242,232,.85);padding-block:56px 36px;font-size:.92rem}
+.rodape__in{display:grid;gap:26px}
+.rodape .marca-site{color:var(--areia)}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.rodape li a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.rodape li a:hover{text-decoration:underline}
+.rodape__base{margin-top:26px;padding-top:20px;border-top:1px solid rgba(247,242,232,.16);font-size:.8rem}
+.site-credit{display:inline-block;font-size:11px;color:inherit;text-decoration:none;opacity:.3;letter-spacing:.02em;transition:opacity .3s ease;padding:6px 0}
+.site-credit:hover,.site-credit:focus-visible{opacity:.8}
+@media (min-width:768px){.rodape__in{grid-template-columns:1.2fr 1fr 1fr;align-items:start}}
+
+/* ============ BARRA FIXA (mobile) ============ */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(247,242,232,.95);border-top:1px solid var(--linha)}
+.barra .btn{width:100%}
+@media (min-width:1024px){.barra{display:none}body{padding-bottom:0}}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  .js [data-reveal]{transform:none;transition:opacity .6s ease}
+  .reg{opacity:1}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- Logo reconstruído em SVG a partir do avatar do Instagram (sol com H nascendo atrás das ondas) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="logoClip"><circle cx="32" cy="32" r="26.8"/></clipPath>
+    <symbol id="logo" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="31" fill="#3E3128"/>
+      <circle cx="32" cy="32" r="28" fill="none" stroke="#C9912F" stroke-width="2.2"/>
+      <path d="M32 9v4M21 12.5l2 3.2M43 12.5l-2 3.2M13.5 19.5l3.3 2M50.5 19.5l-3.3 2" stroke="#C9912F" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 33a12 12 0 0 1 24 0z" fill="#C9912F"/>
+      <path d="M28 33v-9M36 33v-9M28 28.5h8" stroke="#3E3128" stroke-width="2.2"/>
+      <g clip-path="url(#logoClip)">
+        <path d="M2 36c10-5 18 3 30-1s20-4 30-1v30H2z" fill="#C9912F"/>
+        <path d="M2 43c10-5 20 3 32-1s18-3 28 0M2 51c12-5 20 3 32-1s18-3 28 0" stroke="#3E3128" stroke-width="2.4" fill="none"/>
+      </g>
+    </symbol>
+    <symbol id="solzinho" viewBox="0 0 26 15">
+      <path d="M6 13a7 7 0 0 1 14 0z" fill="#C9912F"/>
+      <path d="M1 13.5h24" stroke="#3E3128" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="capim" viewBox="0 0 64 54">
+      <path d="M20 54C19 38 14 24 6 12c10 9 17 24 18 42z" fill="#75855F"/>
+      <path d="M30 54c0-20 3-36 10-50-3 17-5 33-5 50z" fill="#8C9A72"/>
+      <path d="M40 54c2-14 9-26 20-34-9 10-14 21-15 34z" fill="#75855F"/>
+    </symbol>
+    <symbol id="wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1c0 1.2.9 2.4 1 2.6.1.2 1.8 2.7 4.3 3.8 1.6.7 2.2.7 3 .6.5-.1 1.4-.6 1.7-1.1.2-.5.2-1 .1-1.1l-.6-.2z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ 01 NAV ============ -->
+<nav class="nav" id="nav" aria-label="Principal">
+  <div class="wrap nav__in">
+    <a class="marca-site" href="#topo" aria-label="Horizonte Descoberto, início">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span>HORIZONTE<br>DESCOBERTO</span>
+    </a>
+    <div class="nav__links">
+      <a class="ul" href="#refugio">O refúgio</a>
+      <a class="ul" href="#obra">A obra</a>
+      <a class="ul" href="#onde">Onde</a>
+    </div>
+    <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">
+      <span class="longo">Entrar na lista de espera</span><span class="curto">Lista de espera</span>
+    </a>
+  </div>
+</nav>
+
+<main>
+<!-- ============ 02 HERO: o sol do logo nascendo atrás do horizonte ============ -->
+<!-- SUBSTITUIR: quando houver foto panorâmica da vista real em alta (1600x900px), ela pode entrar atrás do SVG; o sol continua por cima -->
+<header class="hero" id="topo">
+  <div class="wrap hero__txt">
+    <p class="hero__selo"><svg width="26" height="15" aria-hidden="true"><use href="#solzinho"/></svg>1ª Eco Cabana do Cerrado</p>
+    <h1>O seu próximo refúgio está nascendo.</h1>
+    <p class="hero__sub">A primeira eco cabana do cerrado, com wellness, natureza e reconexão a 1 hora de Brasília. A obra está acontecendo agora, e quem acompanha entra primeiro.</p>
+    <div class="hero__acoes">
+      <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Quero ser avisado primeiro</a>
+      <a class="ul" href="#obra">Ver a obra</a>
+    </div>
+  </div>
+
+  <div class="hero__ceu" aria-hidden="true">
+    <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <radialGradient id="gSol" cx="50%" cy="42%" r="58%">
+          <stop offset="0" stop-color="#F3CC6E"/><stop offset=".72" stop-color="#C9912F"/><stop offset="1" stop-color="#B27A22"/>
+        </radialGradient>
+        <radialGradient id="gHalo">
+          <stop offset="0" stop-color="#F3CC6E" stop-opacity=".8"/><stop offset=".55" stop-color="#EBC57A" stop-opacity=".3"/><stop offset="1" stop-color="#EBC57A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <g class="sol-halo"><circle cx="860" cy="330" r="330" fill="url(#gHalo)"/></g>
+      <path class="horizonte" d="M0 332 Q720 312 1440 332" stroke="#3E3128" stroke-opacity=".35" stroke-width="1.5" fill="none"/>
+      <g class="raios" stroke="#C9912F" stroke-width="5" stroke-linecap="round" opacity=".75">
+        <path d="M860 128v-38M752 158l-20-32M968 158l20-32M672 232l-32-20M1048 232l32-20"/>
+      </g>
+      <g class="sol"><circle cx="860" cy="330" r="146" fill="url(#gSol)"/></g>
+      <path class="horizonte" d="M0 332 Q720 312 1440 332" stroke="#3E3128" stroke-opacity=".35" stroke-width="1.5" fill="none"/>
+      <path d="M0 352C240 300 430 392 710 348S1180 300 1440 346V560H0Z" fill="#DCC08A"/>
+      <path d="M0 418C300 368 520 452 820 410S1260 380 1440 420V560H0Z" fill="#A3AD86"/>
+      <path d="M0 426C300 376 520 460 820 418S1260 388 1440 428" stroke="#C9912F" stroke-width="3" fill="none" opacity=".7"/>
+      <path d="M0 478C260 438 560 510 900 468S1300 448 1440 480V560H0Z" fill="#75855F"/>
+      <path d="M0 486C260 446 560 518 900 476S1300 456 1440 488" stroke="#C9912F" stroke-width="3" fill="none" opacity=".6"/>
+      <path d="M0 530C360 500 700 560 1080 520S1380 514 1440 524V560H0Z" fill="#3E3128"/>
+      <g class="capim" style="position:static">
+        <use href="#capim" x="150" y="440" width="96" height="81"/>
+        <use href="#capim" x="1210" y="452" width="72" height="61"/>
+      </g>
+    </svg>
+  </div>
+  <div class="status-faixa">
+    <dl class="wrap status">
+      <div><dt>Agenda:</dt><dd>ainda não abriu</dd></div>
+      <div><dt>Obra:</dt><dd>em andamento</dd></div>
+      <div><dt>Último registro:</dt><dd id="stUltimo">14/09, Dia 02</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ============ 03 O REFÚGIO ============ -->
+<section class="refugio abaixo" id="refugio" aria-labelledby="tRefugio">
+  <div class="wrap">
+    <blockquote class="refugio__abre" data-reveal>
+      <p>"Onde o silêncio acolhe, a natureza inspira e o tempo parece passar mais devagar."</p>
+      <cite>do primeiro post da cabana, 09/09/2026</cite>
+    </blockquote>
+
+    <h2 id="tRefugio" data-reveal>Um refúgio para desacelerar.</h2>
+    <ol class="pilares">
+      <li class="pilar" data-reveal>
+        <span class="pilar__nome">Self-wellness</span>
+        <p>Um lugar pensado pro bem-estar. Pra chegar, desligar o celular e cuidar de si no seu tempo.</p>
+      </li>
+      <li class="pilar" data-reveal>
+        <span class="pilar__nome">Natureza</span>
+        <p>Cerrado em volta, céu aberto e uma vista que a gente só consegue descrever como surreal.</p>
+      </li>
+      <li class="pilar" data-reveal>
+        <span class="pilar__nome">Reconexão</span>
+        <p>Desconexão da rotina e conexão com a natureza. Foi com esse propósito que a cabana começou.</p>
+      </li>
+    </ol>
+
+    <div class="refugio__convite" data-reveal>
+      <p>Quem sabe esse não seja o seu próximo refúgio?</p>
+      <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Entrar na lista de espera</a>
+    </div>
+  </div>
+  <svg class="capim" aria-hidden="true"><use href="#capim"/></svg>
+</section>
+
+<!-- ============ 04 O QUE ESTÁ NASCENDO ============ -->
+<!-- VALIDAR: capacidade da cabana, comodidades finais e previsão de inauguração. NÃO prometer nada além do que está aqui -->
+<section class="nascendo abaixo" id="nascendo" aria-labelledby="tNascendo">
+  <div class="wrap">
+    <div class="nascendo__topo">
+      <p class="marca" data-reveal><svg aria-hidden="true"><use href="#solzinho"/></svg>Em obra</p>
+      <h2 id="tNascendo" data-reveal>O que está nascendo</h2>
+      <p data-reveal>Aqui só entra o que já dá pra mostrar. O resto a gente conta quando estiver confirmado.</p>
+    </div>
+
+    <!-- Bloco 1: a cabana e a vista -->
+    <!-- SUBSTITUIR: foto panorâmica atual da estrutura em alta (1200x800px); as atuais são capas de reel -->
+    <article class="bloco vista" data-reveal>
+      <figure class="foto foto--larga">
+        <img src="assets/img/vista.jpg" width="640" height="360" loading="lazy" alt="A cabana em A no alto do terreno, com o horizonte do cerrado ao fundo">
+      </figure>
+      <div class="vista__texto">
+        <div>
+          <span class="bloco__tag">Sendo construída</span>
+          <h3>A cabana e a vista</h3>
+          <p>A estrutura da cabana já está de pé, e agora a obra acontece por fora, no entorno. De lá de cima, o horizonte do cerrado abre inteiro.</p>
+        </div>
+        <figure class="foto foto--menor">
+          <img src="assets/img/obra.jpg" width="640" height="560" loading="lazy" alt="Estrutura de madeira da cabana com deck, e a obra acontecendo no terreno em volta">
+        </figure>
+      </div>
+    </article>
+
+    <!-- Bloco 2: a piscina -->
+    <!-- VALIDAR: o briefing dizia 7x3, mas o post oficial de 14/09 diz "7x3,5". Usado o do post -->
+    <article class="bloco piscina" data-reveal>
+      <figure class="foto">
+        <img src="assets/img/piscina.jpg" width="640" height="800" loading="lazy" alt="Piscina em construção coberta com lona azul, ao lado da terra preparada">
+      </figure>
+      <div>
+        <span class="bloco__tag">Em construção</span>
+        <h3>A piscina</h3>
+        <p class="piscina__num" aria-label="7 por 3,5 metros">7 x 3,5<small>m</small></p>
+        <p class="aspas">"Estamos aos poucos construindo a nossa estrutura para uma ótima experiência."</p>
+      </div>
+    </article>
+
+    <!-- Bloco 3: paisagismo do cerrado -->
+    <article class="bloco paisagismo" data-reveal>
+      <div>
+        <span class="bloco__tag">Plantando agora</span>
+        <h3>O paisagismo do cerrado</h3>
+        <p>O terreno é bem ácido e tem pouco nutriente. Por isso a gente está estudando o solo antes de plantar, pra preparar a terra e escolher espécies que se adaptem bem ao lugar.</p>
+        <p>As primeiras plantas já chegaram. E num dos buracos abertos vai nascer um pé de jaboticaba.</p>
+      </div>
+      <div class="paisagismo__fotos">
+        <figure class="foto"><img src="assets/img/plantas.jpg" width="640" height="569" loading="lazy" alt="Mudas e arbustos que chegaram para o paisagismo, ainda nos vasos"></figure>
+        <figure class="foto"><img src="assets/img/solo.jpg" width="640" height="800" loading="lazy" alt="Pausa na obra ao lado da cabana, de botas, com as ferramentas do plantio"></figure>
+      </div>
+    </article>
+
+    <div class="refugio__convite" data-reveal>
+      <p>Quer ver isso pronto antes de todo mundo?</p>
+      <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Entrar na lista de espera</a>
+    </div>
+  </div>
+</section>
+
+<svg class="horizonte-div" viewBox="0 0 1440 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q720 2 1440 14" stroke="currentColor" stroke-opacity=".25" fill="none" vector-effect="non-scaling-stroke"/></svg>
+
+<!-- ============ 05 DIÁRIO DE OBRA (alimentado pelo array DIARIO no fim da página) ============ -->
+<section class="diario abaixo" id="obra" aria-labelledby="tDiario">
+  <div class="wrap diario__topo">
+    <p class="diario__serie" data-reveal>A série que está rodando no Instagram: <em>"tentando viralizar o empreendimento da minha tia"</em>.</p>
+    <h2 id="tDiario" data-reveal>Diário de obra</h2>
+    <div class="diario__controles">
+      <button type="button" id="irInicio">Voltar ao começo</button>
+      <button type="button" id="irAgora">Agora</button>
+    </div>
+  </div>
+
+  <div class="diario__track" id="diario" role="list" aria-label="Registros da obra, do mais antigo ao mais recente" data-reveal tabindex="0"></div>
+
+  <div class="wrap diario__fecho">
+    <a class="ul" href="https://www.instagram.com/cabanahorizontedescoberto/" target="_blank" rel="noopener">Acompanhe a série no Instagram</a>
+    <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Entrar na comunidade</a>
+  </div>
+</section>
+
+<!-- ============ 06 QUEM ESTÁ CONSTRUINDO ============ -->
+<!-- SUBSTITUIR: nomes reais da tia e da sobrinha, se quiserem aparecer, e a mini-história validada por elas -->
+<!-- VALIDAR: o post de 13/09 diz "Eles vieram do Sul". Confirmar quem são "eles" antes de detalhar -->
+<section class="quem abaixo" id="quem" aria-labelledby="tQuem">
+  <div class="wrap quem__grid">
+    <figure class="foto" data-reveal>
+      <img src="assets/img/celebrar.jpg" width="640" height="800" loading="lazy" alt="De braços abertos na escada da cabana em A, durante a obra">
+    </figure>
+    <div class="quem__txt">
+      <blockquote data-reveal>"Não é fácil, mas é muito bom fazer parte dessa realização."</blockquote>
+      <h2 id="tQuem" data-reveal>Quem está construindo</h2>
+      <p data-reveal>A cabana é o empreendimento da tia. Eles vieram do Sul pra perto de Brasília pra apostar numa ideia de eco cabana focada no bem-estar.</p>
+      <p data-reveal>A sobrinha pegou o celular e começou a contar a obra no Instagram, um dia de cada vez. Muita gente começou a acompanhar, e é por isso que esta página existe.</p>
+      <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Acompanhar de perto</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 JÁ TEM FILA ============ -->
+<section class="fila abaixo" id="fila" aria-labelledby="tFila">
+  <div class="wrap">
+    <h2 class="fila__rotulo" id="tFila" data-reveal>Já tem fila nos comentários</h2>
+    <div class="fila__grid">
+      <blockquote class="fila__destaque" data-reveal>"Quando estiver concluído vou alugar"</blockquote>
+      <ul class="fila__outros">
+        <li data-reveal>"Já quero me hospedar"</li>
+        <li data-reveal>"Já vai estar na minha lista"</li>
+        <li data-reveal>"Minha série favorita, amando acompanhar"</li>
+      </ul>
+    </div>
+    <div class="fila__rodape">
+      <p class="fila__num" data-reveal><strong>164</strong>comentários no vídeo do Dia 01 (contagem de 14/09/2026)</p>
+      <p class="fila__aviso" data-reveal>A lista de espera é avisada primeiro.</p>
+      <div data-reveal><a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Entrar na lista de espera</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 ONDE ============ -->
+<!-- VALIDAR: como comunicar a localização exata (ou só a região, se preferirem discrição até a inauguração). O teaser de 09/09 cita "próximo ao Outlet": não usado -->
+<section class="onde abaixo" id="onde" aria-labelledby="tOnde">
+  <div class="wrap onde__grid">
+    <div class="onde__txt">
+      <p class="marca" data-reveal><svg aria-hidden="true"><use href="#solzinho"/></svg>Onde</p>
+      <h2 id="tOnde" data-reveal style="margin-top:14px">Santo Antônio do Descoberto, Goiás.</h2>
+      <p class="onde__dist" data-reveal>A 1 hora de Brasília.</p>
+      <p data-reveal>Perto o bastante pra ir no fim de semana, longe o bastante pra ouvir o cerrado. O endereço completo a gente divulga quando a agenda abrir.</p>
+      <div class="onde__acoes" data-reveal>
+        <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Quero ser avisado</a>
+        <a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=Santo+Ant%C3%B4nio+do+Descoberto+GO" target="_blank" rel="noopener">Ver a cidade no mapa</a>
+      </div>
+    </div>
+    <div data-reveal>
+      <!-- SUBSTITUIR: embed do Google Maps quando decidirem o nível de localização -->
+      <div class="mapa" role="img" aria-label="Mapa ilustrativo: Santo Antônio do Descoberto fica a cerca de 1 hora de Brasília, a oeste">
+        <svg viewBox="0 0 400 300" aria-hidden="true">
+          <path d="M-10 210C60 180 120 240 210 205S340 170 410 200" stroke="#75855F" stroke-opacity=".35" stroke-width="1.5" fill="none"/>
+          <path d="M-10 90C80 70 150 120 240 95S350 60 410 80" stroke="#75855F" stroke-opacity=".3" stroke-width="1.5" fill="none"/>
+          <path d="M-10 250C90 232 170 270 260 250S360 226 410 240" stroke="#75855F" stroke-opacity=".25" stroke-width="1.5" fill="none"/>
+          <path d="M112 168C170 150 232 176 300 128" stroke="#3E3128" stroke-width="2" stroke-dasharray="6 7" fill="none" stroke-linecap="round"/>
+          <circle cx="300" cy="128" r="7" fill="#3E3128"/>
+          <text x="300" y="108" text-anchor="middle" font-family="Albert Sans, sans-serif" font-weight="700" font-size="15" fill="#3E3128">Brasília</text>
+          <rect x="184" y="136" width="42" height="24" rx="12" fill="#F7F2E8"/>
+          <text x="205" y="153" text-anchor="middle" font-family="Albert Sans, sans-serif" font-weight="700" font-size="13" fill="#3E3128">1h</text>
+          <path d="M112 176c-16-18-24-30-24-42a24 24 0 0 1 48 0c0 12-8 24-24 42z" fill="#3E3128"/>
+          <path d="M101 136a11 11 0 0 1 22 0z" fill="#C9912F"/>
+          <path d="M97 136.5h30" stroke="#C9912F" stroke-width="1.5"/>
+          <text x="112" y="204" text-anchor="middle" font-family="Albert Sans, sans-serif" font-weight="700" font-size="14" fill="#3E3128">Santo Antônio</text>
+          <text x="112" y="221" text-anchor="middle" font-family="Albert Sans, sans-serif" font-weight="700" font-size="14" fill="#3E3128">do Descoberto</text>
+        </svg>
+      </div>
+      <p class="mapa__nota">Mapa ilustrativo, fora de escala.</p>
+    </div>
+  </div>
+  <svg class="capim" aria-hidden="true"><use href="#capim"/></svg>
+</section>
+
+<!-- ============ 09 CTA FINAL ============ -->
+<section class="final abaixo" id="lista" aria-labelledby="tFinal">
+  <div class="wrap">
+    <h2 id="tFinal" data-reveal>Quando a agenda abrir, você fica sabendo primeiro.</h2>
+    <div data-reveal>
+      <a class="btn btn--grande" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Entrar na lista de espera</a>
+      <span class="final__ig"><a class="ul" href="https://www.instagram.com/cabanahorizontedescoberto/" target="_blank" rel="noopener">@cabanahorizontedescoberto</a></span>
+    </div>
+  </div>
+  <!-- o sol do logo reaparece, parado no horizonte -->
+  <svg class="final__sol" viewBox="0 0 560 150" aria-hidden="true">
+    <defs><radialGradient id="gSol2" cx="50%" cy="80%" r="70%"><stop offset="0" stop-color="#F3CC6E"/><stop offset="1" stop-color="#C9912F"/></radialGradient>
+    <radialGradient id="gHalo2"><stop offset="0" stop-color="#F3CC6E" stop-opacity=".7"/><stop offset="1" stop-color="#F3CC6E" stop-opacity="0"/></radialGradient></defs>
+    <g class="sol-halo" style="animation:none"><circle cx="280" cy="150" r="150" fill="url(#gHalo2)"/></g>
+    <path d="M190 150a90 90 0 0 1 180 0z" fill="url(#gSol2)"/>
+    <path d="M0 149.5h560" stroke="#3E3128" stroke-opacity=".4"/>
+  </svg>
+</section>
+</main>
+
+<!-- ============ 10 FOOTER ============ -->
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape__in">
+      <div>
+        <a class="marca-site" href="#topo"><svg aria-hidden="true"><use href="#logo"/></svg><span>HORIZONTE<br>DESCOBERTO</span></a>
+        <p style="margin-top:14px">1ª Eco Cabana do Cerrado.<br>Santo Antônio do Descoberto/GO, a 1h de Brasília.</p>
+      </div>
+      <ul>
+        <li><a href="#refugio">O refúgio</a></li>
+        <li><a href="#obra">Diário de obra</a></li>
+        <li><a href="#onde">Onde</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Lista de espera no WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/cabanahorizontedescoberto/" target="_blank" rel="noopener">Instagram @cabanahorizontedescoberto</a></li>
+      </ul>
+    </div>
+    <div class="rodape__base">
+      <p>© 2026 Cabana Horizonte Descoberto. Em construção.</p>
+      <a href="https://www.instagram.com/baruc.amare/" target="_blank" rel="noopener" class="site-credit">feito por @baruc.amare</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BARRA FIXA MOBILE (permanente) ============ -->
+<div class="barra">
+  <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Entrar na lista de espera</a>
+</div>
+
+<script>
+/* =====================================================================
+   DIÁRIO DE OBRA: pra atualizar, é só acrescentar um item NO FIM do array.
+   - data:   AAAA-MM-DD (dia do post, horário de Brasília)
+   - dia:    número do "Dia" da série no Instagram em que o post saiu; null = antes da série
+   - titulo, texto: curtos, no tom delas (texto pode ser a própria legenda)
+   - foto:   caminho da capa (360x640) em assets/img/diario/
+   - reel:   código do reel (instagram.com/reel/CODIGO)
+   O último item vira "AGORA" sozinho, e o hero mostra a data dele.
+   SUBSTITUIR: marcos reais daqui pra frente
+   ===================================================================== */
+const DIARIO = [
+  { data:'2026-09-09', dia:null, titulo:'Em breve',                   texto:'Um novo refúgio está nascendo no Cerrado, a apenas 1h de Brasília.', foto:'assets/img/diario/12.jpg', reel:'DdFnPgzuzA-' },
+  { data:'2026-09-12', dia:null, titulo:'A primeira eco cabana',      texto:'Nossa primeira Eco Cabana, fica próximo de Brasília. Acompanhe nossa obra.', foto:'assets/img/diario/11.jpg', reel:'DdNF-nOOEDP' },
+  { data:'2026-09-13', dia:null, titulo:'Construindo do zero',        texto:'Construindo a nossa Eco Cabana do zero.', foto:'assets/img/diario/10.jpg', reel:'DdOR9guA8A9' },
+  { data:'2026-09-13', dia:1,    titulo:'Vieram do Sul',              texto:'Eles vieram do Sul para próximo de Brasília para apostar numa ideia de Eco Cabana, focada no bem-estar.', foto:'assets/img/diario/09.jpg', reel:'DdPY3PeJUlZ' },
+  { data:'2026-09-13', dia:1,    titulo:'A dúvida das formigas',      texto:'Verdade que as formigas atacam plantas com poucos nutrientes? Essa dúvida é recorrente.', foto:'assets/img/diario/08.jpg', reel:'DdPcKKBpLnA' },
+  { data:'2026-09-13', dia:1,    titulo:'Celebrar o processo',        texto:'O processo também merece ser celebrado, não só o resultado.', foto:'assets/img/diario/07.jpg', reel:'DdPwyP4Oh5e' },
+  { data:'2026-09-13', dia:1,    titulo:'O pé de jaboticaba',         texto:'Aqui será um pé de jaboticaba. Não é fácil, mas é muito bom fazer parte dessa realização.', foto:'assets/img/diario/06.jpg', reel:'DdP24oLOV48' },
+  { data:'2026-09-14', dia:2,    titulo:'Estudando possibilidades',   texto:'Queremos oferecer uma experiência na natureza com o nosso projeto da Eco Cabana.', foto:'assets/img/diario/05.jpg', reel:'DdRLNmjuujF' },
+  { data:'2026-09-14', dia:2,    titulo:'O desafio do solo',          texto:'O terreno é bem ácido e com pouco nutriente. Estamos buscando as melhores alternativas pra preparar a terra.', foto:'assets/img/diario/04.jpg', reel:'DdRV3lKO-tK' },
+  { data:'2026-09-14', dia:2,    titulo:'A vista',                    texto:'Um pouco mais da cabana, da parte externa e dessa vista que é simplesmente surreal.', foto:'assets/img/diario/03.jpg', reel:'DdRz-SPJdvc' },
+  { data:'2026-09-14', dia:2,    titulo:'Chegaram as primeiras plantas', texto:'Escolhemos as primeiras plantas para o nosso paisagismo.', foto:'assets/img/diario/02.jpg', reel:'DdSCo4sJu4Y' },
+  { data:'2026-09-14', dia:2,    titulo:'A piscina',                  texto:'Nossa piscina tem medidas de 7x3,5. Estamos aos poucos construindo a nossa estrutura.', foto:'assets/img/diario/01.jpg', reel:'DdSISniJG16' }
+];
+
+(function(){
+  const pad = n => String(n).padStart(2,'0');
+  const fmt = d => { const [a,m,dd] = d.split('-'); return dd + '/' + m; };
+  const rotulo = r => r.dia ? 'Dia ' + pad(r.dia) : 'Antes da série';
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  /* ---- render do diário ---- */
+  const track = document.getElementById('diario');
+  let anterior = '__';
+  track.innerHTML = DIARIO.map((r, i) => {
+    const ultimo = i === DIARIO.length - 1;
+    const grupo = rotulo(r);
+    const marcaDia = grupo !== anterior ? '<span class="reg__dia">' + grupo + '</span>' : '';
+    anterior = grupo;
+    return '<article class="reg' + (ultimo ? ' reg--agora' : '') + '" role="listitem" style="--i:' + Math.max(0, i - (DIARIO.length - 5)) + '">' +
+      marcaDia +
+      '<div class="reg__foto">' +
+        (ultimo ? '<span class="agora"><i></i>AGORA</span>' : '') +
+        '<img src="' + r.foto + '" width="360" height="640" loading="lazy" alt="' + esc(r.titulo) + ', capa do vídeo da obra">' +
+      '</div>' +
+      '<time datetime="' + r.data + '">' + fmt(r.data) + ' · ' + grupo + '</time>' +
+      '<h3>' + esc(r.titulo) + '</h3>' +
+      '<p>' + esc(r.texto) + '</p>' +
+      '<a class="ul" href="https://www.instagram.com/reel/' + r.reel + '/" target="_blank" rel="noopener">Ver o vídeo</a>' +
+    '</article>';
+  }).join('');
+
+  /* ---- status do hero ---- */
+  const u = DIARIO[DIARIO.length - 1];
+  document.getElementById('stUltimo').textContent = fmt(u.data) + ', ' + rotulo(u);
+
+  /* ---- controles do diário ---- */
+  const irFim = (smooth) => track.scrollTo({ left: track.scrollWidth, behavior: smooth ? 'smooth' : 'auto' });
+  document.getElementById('irAgora').addEventListener('click', () => irFim(true));
+  document.getElementById('irInicio').addEventListener('click', () => track.scrollTo({ left: 0, behavior: 'smooth' }));
+
+  /* ---- reveal ---- */
+  const alvos = document.querySelectorAll('[data-reveal]');
+  const mostrar = el => {
+    if (el.classList.contains('is-visible')) return;
+    el.classList.add('is-visible');
+    if (el === track) requestAnimationFrame(() => irFim(false)); /* abre no registro mais recente */
+  };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entradas => {
+      entradas.forEach(e => { if (e.isIntersecting) { mostrar(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -15% 0px' });
+    alvos.forEach(el => io.observe(el));
+  } else {
+    alvos.forEach(mostrar);
+  }
+  /* failsafe: nada fica invisível depois de 3s */
+  setTimeout(() => alvos.forEach(el => { if (!el.classList.contains('is-visible') && el.getBoundingClientRect().top < innerHeight) mostrar(el); }), 3000);
+  setTimeout(() => alvos.forEach(el => { if (el !== track) el.classList.add('is-visible'); }), 3000);
+
+  /* ---- nav com borda depois de rolar ---- */
+  const nav = document.getElementById('nav');
+  let rolou = false;
+  addEventListener('scroll', () => {
+    const r = scrollY > 20;
+    if (r !== rolou) { rolou = r; nav.classList.toggle('rolou', r); }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
