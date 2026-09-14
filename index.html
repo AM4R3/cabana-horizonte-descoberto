@@ -146,7 +146,7 @@ section{position:relative}
 .hero__sub{max-width:34rem;margin-top:16px;font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.55;color:var(--texto);animation:riseIn .9s .25s var(--ease) both}
 .hero__acoes{display:flex;flex-wrap:wrap;align-items:center;gap:4px 26px;margin-top:22px;animation:riseIn .9s .4s var(--ease) both}
 .hero__acoes .ul{font-weight:700;color:var(--terra)}
-.status{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:4px 24px;margin:0;padding-block:14px 16px;font-size:.85rem;color:rgba(247,242,232,.86)}
+.status{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:4px 24px;margin-block:0;padding-block:14px 16px;font-size:.85rem;color:rgba(247,242,232,.86)}
 .status-faixa{background:var(--terra)}
 .status div{display:flex;gap:6px}
 .status dt{font-weight:700;color:var(--areia)}
@@ -428,7 +428,7 @@ section{position:relative}
     <ol class="pilares">
       <li class="pilar" data-reveal>
         <span class="pilar__nome">Self-wellness</span>
-        <p>Um lugar pensado pro bem-estar. Pra chegar, desligar o celular e cuidar de si no seu tempo.</p>
+        <p>Um lugar pensado pro bem-estar, pra chegar e cuidar de si no seu tempo.</p>
       </li>
       <li class="pilar" data-reveal>
         <span class="pilar__nome">Natureza</span>
@@ -496,7 +496,7 @@ section{position:relative}
         <span class="bloco__tag">Plantando agora</span>
         <h3>O paisagismo do cerrado</h3>
         <p>O terreno é bem ácido e tem pouco nutriente. Por isso a gente está estudando o solo antes de plantar, pra preparar a terra e escolher espécies que se adaptem bem ao lugar.</p>
-        <p>As primeiras plantas já chegaram. E num dos buracos abertos vai nascer um pé de jaboticaba.</p>
+        <p>As primeiras plantas já chegaram, e um dos lugares já tem destino: ali vai ser um pé de jaboticaba.</p>
       </div>
       <div class="paisagismo__fotos">
         <figure class="foto"><img src="assets/img/plantas.jpg" width="640" height="569" loading="lazy" alt="Mudas e arbustos que chegaram para o paisagismo, ainda nos vasos"></figure>
@@ -578,7 +578,7 @@ section{position:relative}
       <p class="marca" data-reveal><svg aria-hidden="true"><use href="#solzinho"/></svg>Onde</p>
       <h2 id="tOnde" data-reveal style="margin-top:14px">Santo Antônio do Descoberto, Goiás.</h2>
       <p class="onde__dist" data-reveal>A 1 hora de Brasília.</p>
-      <p data-reveal>Perto o bastante pra ir no fim de semana, longe o bastante pra ouvir o cerrado. O endereço completo a gente divulga quando a agenda abrir.</p>
+      <p data-reveal>É ali, no cerrado goiano, que a cabana está sendo construída.</p>
       <div class="onde__acoes" data-reveal>
         <a class="btn" href="https://chat.whatsapp.com/I9QJpiAxG1EKJbrcxL7MFm" target="_blank" rel="noopener">Quero ser avisado</a>
         <a class="ul" href="https://www.google.com/maps/search/?api=1&amp;query=Santo+Ant%C3%B4nio+do+Descoberto+GO" target="_blank" rel="noopener">Ver a cidade no mapa</a>
@@ -699,7 +699,7 @@ const DIARIO = [
     const grupo = rotulo(r);
     const marcaDia = grupo !== anterior ? '<span class="reg__dia">' + grupo + '</span>' : '';
     anterior = grupo;
-    return '<article class="reg' + (ultimo ? ' reg--agora' : '') + '" role="listitem" style="--i:' + Math.max(0, i - (DIARIO.length - 5)) + '">' +
+    return '<div class="reg' + (ultimo ? ' reg--agora' : '') + '" role="listitem" style="--i:' + Math.max(0, i - (DIARIO.length - 5)) + '">' +
       marcaDia +
       '<div class="reg__foto">' +
         (ultimo ? '<span class="agora"><i></i>AGORA</span>' : '') +
@@ -709,7 +709,7 @@ const DIARIO = [
       '<h3>' + esc(r.titulo) + '</h3>' +
       '<p>' + esc(r.texto) + '</p>' +
       '<a class="ul" href="https://www.instagram.com/reel/' + r.reel + '/" target="_blank" rel="noopener">Ver o vídeo</a>' +
-    '</article>';
+    '</div>';
   }).join('');
 
   /* ---- status do hero ---- */
